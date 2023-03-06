@@ -289,9 +289,9 @@
 
             <div class=" p-5 justify-content-between d-flex " style="width: 700px;">
                 <div ></div>
-                <div class="d-flex " style="margin-left: 100px; ">
-                    <a href="/c/toProblemNo/{{$contestt}}" style="margin-right: 20px; text-align: center;" class="anchor p-2" >Next</a>
-                    <input class="anchor p-2" type="submit" value="Save" >
+                <div class="d-flex " style="margin-left: 100px;">
+                    <a href="/c/toProblemNo/{{$contestt}}" style="margin-right: 20px; text-align: center; @if (Auth::user()->username != $contest->creator) display:none @endif "  class="anchor p-2" >Next</a>
+                    <input style=" @if (Auth::user()->username != $contest->creator) display:none @endif " class="anchor p-2" type="submit" value="Save" >
                 </div>
             </div>
             @endforeach

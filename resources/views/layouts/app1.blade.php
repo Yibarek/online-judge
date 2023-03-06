@@ -140,27 +140,26 @@
         <ul id="menus" style="width: 100%;" class="d-flex justify-content-between">
             <div class="d-flex">
             <li><a class="nav-link scrollto active" id="home" href="/home">Home</a></li>
-            
+
             @auth
                 <li><a class="nav-link scrollto" id="contest" href="/c/0">Contests</a></li>
             @else
                 <li><a class="nav-link scrollto" id="contest" href="/contest">Contests</a></li>
             @endauth
-            
+
             @auth
                 <li><a class="nav-link scrollto " id="problem" href="/p/0">Problem</a></li>
             @else
                 <li><a class="nav-link scrollto " id="problem" href="/problems">Problem</a></li>
             @endauth
-            
+
             @auth
                 <li><a class="nav-link scrollto" id="submission" href="/s/0">Submissions</a></li>
             @else
                 <li><a class="nav-link scrollto " id="submission" href="/submission">Submissions</a></li>
             @endauth
-            
+
             <li><a class="nav-link scrollto" id="about" href="#about">About</a></li>
-            <li><a class="nav-link scrollto" id="contact" href="#contact">Contact</a></li>
             </div>
             <script>document.getElementById('home').style.color = "#495057";</script>
             <div class="d-flex">

@@ -106,10 +106,12 @@ class problemController extends Controller
                                                         'submissions'=>$submissions]);
 
         }else {
-            $Pcount= DB::table('problems')->where('visibility', 'passed')->count();
+            $Pcount= DB::table('problems')->where('visibility', 'passed')->orwhere(function($q){
+                $q->where('visibility', 'up comming')
+                ->Where('writter', Auth::user()->username);})->count();
             $problems= DB::table('problems')->where('visibility', 'passed')->orwhere(function($q){
                 $q->where('visibility', 'up comming')
-                ->orWhere('writter', Auth::user()->username);})
+                ->Where('writter', Auth::user()->username);})
             ->distinct()->orderBy('id','DESC')->paginate(75);
             return view('Problem',['problems'=>$problems, 'Contests'=>contestController::Contests(),
                                                             'con_reg'=>contestController::con_reg(),
@@ -128,7 +130,7 @@ class problemController extends Controller
             }
         }
 
-        
+
     public function list_geust(){
         $submissions = DB::table('submissions')->where('user', '')->get();
         $submissionsError = DB::table('submissions')->where('user', '')->get();

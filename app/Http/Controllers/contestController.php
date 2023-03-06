@@ -549,7 +549,8 @@ class contestController extends Controller
 
         }
         else {
-            return redirect('/accessdenied');
+            $contests = DB::table('contests')->where('id', $contestt)->get();
+        return view('contest.Schedule', ['contests' => $contests, 'contestt' => $contestt]);
         }
     }
 

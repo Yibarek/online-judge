@@ -472,7 +472,7 @@
                         </td>
                         <td style="padding-right: 15px;">
                             <a class="anchor p-2"
-                                href="/lc/contestant/{{$contest->id}}">Contestants</a>
+                                href="/lc/contestants/{{$contest->id}}">Contestants</a>
                         </td>
                     </tr>
                 </table>
