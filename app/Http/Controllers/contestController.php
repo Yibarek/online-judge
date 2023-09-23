@@ -115,9 +115,11 @@ class contestController extends Controller
     }
     public function detail ($contestt){
         $contest = DB::table('contests')->where('id', $contestt)->get();
-        return view('contest.contestDetail',['contestt' =>$contestt, 'contest' => $contest]);
+        $sponsers = DB::table('sponsers')->where('contest', $contestt)->distinct()->get();
+    return view('contest.contestDetail',['contestt' =>$contestt, 'contest' => $contest, 'sponsers' => $sponsers]);
     }
     public function contestDetail (Request $request, $contestt){
+        $sponsers = DB::table('sponsers')->where('contest', $contestt)->distinct()->get();
         $creator='';
         $contest = DB::table('contests')->where('id', $contestt)->get();
         foreach ($contest as $c) {
@@ -520,6 +522,7 @@ class contestController extends Controller
 
     public function toDetail($contestt){
         $creator='';
+        $sponsers = DB::table('sponsers')->where('contest', $contestt)->distinct()->get();
         $contest = DB::table('contests')->where('id', $contestt)->get();
         foreach ($contest as $c) {
             $creator = $c->creator;

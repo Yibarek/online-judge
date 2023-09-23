@@ -163,7 +163,7 @@
                                         if(end_time1{{$c_id}} > 0){
                                             @foreach ($Contestants as $contestant)
                                                 @if ($contestant->status == 'Accepted')
-                                                    document.getElementById("enter{{$c_id}}").innerHTML = "Enter"
+                                                    // document.getElementById("enter{{$c_id}}").innerHTML = "Enter"
                                                 @else
                                                     document.getElementById("time_left{{$c_id}}").innerHTML="Before Contest End";
                                                 @endif
@@ -258,7 +258,17 @@
 
                         </div>
                         <div class="modal-body pt-1" >
-                                <textarea name="" disabled = "true" id="" style="width: 100%; margin: auto; height: 85%; margin-top: 20px;"></textarea>
+                                <textarea name="" disabled = "true" id="" style="width: 100%; margin: auto; height: 85%; margin-top: 20px;">
+                The registration confirms that you:
+
+
+* have read the contest rules
+* will not violate the rules
+* will not communicate with other participants, use another person's code for solutions/generators, share ideas of solutions and hacks
+* will not attempt to deliberately destabilize the testing process and try to hack the contest system in any form
+* will not use multiple accounts and will take part in the contest using your personal and the single account.
+
+                                </textarea>
                                 <div class="modal-footer navbar">
                                     <a class="button p-2 getstarted"
                                             href="/lc/add/contestant/{{$c_id}}"

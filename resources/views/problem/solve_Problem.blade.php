@@ -23,10 +23,18 @@
                                         height: 2200px; overflow: hidden;
                                         padding-left: 20%; padding-right: 20%;">
 
-            <embed name="1D2D17AC156EC59F114AEF60F1A51CAD" style="width: 100%; margin: auto; height: 100%;
+            <object style="width: 100%; margin: auto; height: 100%;
+                                                                 background-color: #fff;
+                                                                 "
+                    data="../../file/problems/{{$problem->pdf_file}}#toolbar=0" type="" internalid="1D2D17AC156EC59F114AEF60F1A51CAD">
+                    <embed name="1D2D17AC156EC59F114AEF60F1A51CAD" style="width: 100%; margin: auto; height: 100%;
                                                                  background-color: #fff;
                                                                  "
                     src="../../file/problems/{{$problem->pdf_file}}#toolbar=0" type="" internalid="1D2D17AC156EC59F114AEF60F1A51CAD">
+                    Error: The page could not be embedded.
+                </embed>
+                    Error: The page could not be embedded.
+                </object>
         </div>
         {{-- </div> --}}
     </div>

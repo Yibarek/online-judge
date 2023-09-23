@@ -44,9 +44,31 @@ label {
     <div class="container" style="height: fit-content; min-width: 300px; width: 95%; margin: auto;">
 
         <div style ="border-radius: 5px; min-width: fit-content; background-color: white;" class="p-3">
-        <div class="d-flex" style="font-weight: bold; padding-left: 40px; width: 100%; height: 28px; border-radius: 5px; padding-bottom: 7px; margin-bottom: 10px;">
-            <div><img src="../../image/profile/team.png" width="35" height="35" style="color: #444;"></div>
-            <label class="page_title">Teams</label>
+        <div class="d-flex justify-content-between" style="font-weight: bold; padding-left: 40px; width: 100%; height: 28px; border-radius: 5px; padding-bottom: 7px; margin-bottom: 10px;">
+            <div class="d-flex justify-content-between">
+                <div><img src="../../image/profile/team.png" width="35" height="35" style="color: #444;"></div>
+                <label class="page_title">Teams</label>
+            </div>
+            @auth
+                    <div class="d-flex justify-content-between">
+                        <div class=" " style="width: 140px;">
+                            @if (Auth::user()->role == "superadmin")
+                            <a href="/org/{{$contestt}}"
+                                style="margin-right:5px; text-decoration: none; border-radius: 20px;"
+                                class="anchor p-2"> Organizations {{$organizations}}</a>
+                            @endif
+                        </div>
+                        <div class=" " style="width: 150px;">
+                            @if (Auth::user()->role == "superadmin")
+                            <a href="/cy/{{$contestt}}"
+                                style="margin-right:5px; text-decoration: none; border-radius: 20px;"
+                                class="anchor p-2"> Countries {{$countries}}</a>
+                            @endif
+                        </div>
+                    </div>
+                @else
+                    <div>.</div>
+                @endauth
         </div>
         <div style="">
         <table class="table table-borderless datatable table-hover table-sm " style="padding-left: 40px; min-width: 400px; width: 100%; height: 20px; font-size: 14px;" >

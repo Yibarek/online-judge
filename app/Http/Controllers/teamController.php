@@ -13,7 +13,7 @@ class teamController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'verified']);
+        $this->middleware(['auth']);
     }
 
     public function list(){
@@ -21,13 +21,16 @@ class teamController extends Controller
         $teams= DB::table('teams')->distinct()->orderBy('id', 'DESC')->paginate(75);
         $members= DB::table('users')->distinct()->orderBy('team', 'DESC')->get();
         $organization= DB::table('organizations')->distinct()->orderBy('name')->get();
+        $organizations= DB::table('organizations')->count();
+        $countries= DB::table('countries')->count();
         return view('Team',['teams'=>$teams, 'Contests'=>contestController::Contests(),
                                                 'con_reg'=>contestController::con_reg(),
                                                 'Contestants'=>contestController::Contestants(),
                                                 'Count'=>contestController::Count(),
                                                 'members'=>$members,
                                                 'contestt'=>0,
-                                                'organization'=>$organization]);
+                                                'countries'=>$countries,
+                                                'organizations'=>$organizations]);
     }
 
     public function createTeam(Request $request){
