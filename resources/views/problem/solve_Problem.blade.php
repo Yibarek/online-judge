@@ -31,7 +31,6 @@
                                                                  background-color: #fff;
                                                                  "
                     src="../../file/problems/{{$problem->pdf_file}}#toolbar=0" type="" internalid="1D2D17AC156EC59F114AEF60F1A51CAD">
-                    Error: The page could not be embedded.
                 </embed>
                     Error: The page could not be embedded.
                 </object>
