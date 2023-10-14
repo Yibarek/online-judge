@@ -10,7 +10,7 @@ Programming Contest Judge Systemposes problems such as questions in programming 
 
 <h1>INSTALLATION</h1>
 <h2>Step 1: Install Required Software</h2>
-Before getting started, ensure that your machine meets the system requirements for running Laravel projects. You’ll need to have the following software installed:<br><br>
+Before getting started, ensure that your machine meets the system requirements for running Laravel projects. You’ll need to have the following software installed:<br>
 <b>PHP:</b> Install the latest stable version of PHP on your machine. You can download it from the official PHP website (https://www.php.net/downloads.php).
 
 <b>Composer:</b> Laravel relies heavily on Composer, a dependency management tool for PHP. Install Composer by following the instructions on the Composer website (https://getcomposer.org/download/).
@@ -19,6 +19,7 @@ Before getting started, ensure that your machine meets the system requirements f
 Open your terminal or command prompt.<br>
 Navigate to the directory where you want to store the project.<br>
 Run the following command to clone the repository:
+
 ```console
 git clone https://github.com/Yibarek/online-judge
 ```
