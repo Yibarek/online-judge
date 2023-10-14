@@ -2,6 +2,7 @@
 
 Online programing contest judge system is developed by ![larave](https://github.com/Yibarek/online-judge/assets/97822348/f1812b13-49eb-40e9-a49e-c2c8c06dc62b) <b>Laravel</b> framework and here are some description about the system and installation procedures.
 
+<b>About Online Programming Contest Judge System</b>
 ![Alt text](image.png)
 
 Programming Contest Judge System is a web application that is developed to evaluate (judge) the algorithmic source code submitted by the users and tests it against various test cases and constraints. It also hosts Competitive Programming Contests as well and produces contest results, which usually called score boards for every contest. Users are also able to practice by submitting any problem after the contest ends. 
