@@ -21,7 +21,7 @@ Navigate to the directory where you want to store the project.<br>
 Run the following command to clone the repository:
 
 ```console
-        git clone https://github.com/Yibarek/online-judge
+git clone https://github.com/Yibarek/online-judge
 ```
 
 <h2>Step 3: Install Dependencies</h2>
@@ -30,7 +30,9 @@ Navigate to the project directory in your terminal.
 
 Execute the following command to install the project dependencies:
 
+```console
 composer update
+```
 
 <h2>Step 4: Set Up Environment Configuration</h2>
 Most Laravel projects require environment-specific configurations, such as database credentials and application settings. Follow these steps to set up the environment configuration:
@@ -42,16 +44,24 @@ Open the .env file and configure the necessary environment variables, such as th
 
 <h2>Step 5: Generate Application Key</h2>
 Laravel requires an application key to secure session data and other sensitive information. Generate a unique application key by executing the following command:
+
+```console
 php artisan key:generate
+```
 <h2>Step 6: Migrate and Seed the Database (if applicable)</h2>
 If the Laravel project you downloaded includes a database, you may need to migrate and seed it with initial data. Run the following commands in your terminal:
 Migrate the database tables:
 
+```console
 php artisan migrate
+```
 
 <h2>Step 7: Launch the System:</h2>
 In your terminal, navigate to the project directory.
 Start the development server by executing the following command:
+
+```console
 php artisan serve
+```
 
 Open your web browser and visit http://localhost:8000 (or the specified port) to access the running Laravel project.
