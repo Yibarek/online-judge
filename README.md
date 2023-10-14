@@ -42,13 +42,15 @@ Create a copy of this file and rename it to .env.
 Open the .env file and configure the necessary environment variables, such as the database connection details.
 
 <h2>Step 5: Generate Application Key</h2>
-Laravel requires an application key to secure session data and other sensitive information. Generate a unique application key by executing the following command:
+Laravel requires an application key to secure session data and other sensitive information. Generate a unique application key by executing the following command: 
+
 ```console
 php artisan key:generate
 ```
 <h2>Step 6: Migrate the Database</h2>
 Create a Database called <b>judge</b> on your mySQL DBMS and  run the following commands in your terminal to migrate the database:
 Migrate the database tables:
+
 ```console
 php artisan migrate
 ```
@@ -56,6 +58,7 @@ php artisan migrate
 <h2>Step 7: Launch the System:</h2>
 In your terminal, navigate to the project directory.
 Start the development server by executing the following command:
+
 ```console
 php artisan serve
 ```
