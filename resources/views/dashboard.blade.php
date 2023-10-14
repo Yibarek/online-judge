@@ -626,6 +626,7 @@ r-radius: 5px; width: 92%; margin: auto; margin-top: 3px; background-color: whit
           @if ($i==10)
               @break
           @endif
+        
         @endforeach
 
         @if ($i == 1)

@@ -77,76 +77,106 @@
               @endforeach
 
               @auth
-                @if ((strtotime("now")>=strtotime($freez_start) && strtotime("now")<=strtotime($freez_end) &&
-                    strtotime($submission_time)>=strtotime($freez_start) && strtotime($submission_time)<=strtotime($freez_end)) ||
-                    Auth::user()->role != 'superadmin' && Auth::user()->username != $creator)
-                    @if (($accepted == false && $try > 0) || ($accepted == true))
-                        <td style="background-color: rgb(134, 136, 253);  text-align: center; height: 35px;" > {{--first solved--}}
-                        <div style="align-self: center;">
-                            <label>{{$try}} try</label>
-                            <label></label>
-                        </div>
-                        </td>
-                    @else
-                        <td style="height: 35px;"></td>
-                    @endif
+              @if ((strtotime("now")>=strtotime($freez_start) && strtotime("now")<=strtotime($freez_end) &&
+                  strtotime($submission_time)>=strtotime($freez_start) && strtotime($submission_time)<=strtotime($freez_end)))
+             @if(Auth::user()->role == 'superadmin' && Auth::user()->username == $creator || $submission_user == Auth::user()->username)
+                      @if ($accepted == true)
+                      <td style="
 
-                @else
-                    @if ($accepted == true)
-                        <td style="
-                            @if ($minute == $problem->firstsolved)
-                                background-color: rgb(2, 150, 2); color: #fff;
-                            @elseif ($minute > $problem->firstsolved)
-                                background-color: rgb(100, 225, 100);
-                            @endif
+                          @if ($minute == $problem->firstsolved)
+                              background-color: rgb(2, 150, 2); color: #fff;
+                          @elseif ($minute > $problem->firstsolved)
+                              background-color: rgb(100, 225, 100);
+                          @endif
 
-                            text-align: center;" > {{--first solved--}}
-                            <div>
-                                <strong class="justify-content-center">{{$minute}}</strong>
-                                <div style="align-self: center;">
-                                    <label>{{$try}} try</label>
-                                </div>
-                            </div>
-                        </td>
-                    @elseif ($accepted == false && $try > 0)
-                        <td rowpan="2" class="pt-2" style="background-color: rgb(255, 145, 136); text-align: center; height: 40px;" > {{--first solved--}}
-                            {{-- <strong style="color: rgb(243, 99, 92)">.</strong> --}}
-                            <div style="align-self: center;">
-                            <label>{{$try}} try</label>
-                            </div>
-                        </td>
-                    @else
-                        <td style="height: 35px;"></td>
-                    @endif
-                @endif
-            @else
-                @if ($accepted == true)
-                    <td style="
-                        @if ($minute == $problem->firstsolved)
-                            background-color: rgb(2, 150, 2); color: #fff;
-                        @elseif ($minute > $problem->firstsolved)
-                            background-color: rgb(100, 225, 100);
-                        @endif
+                          text-align: center;" > {{--first solved--}}
+                          <div>
+                              <strong class="justify-content-center">{{$minute}}</strong>
+                              <div style="align-self: center;">
+                                  <label>{{$try}} try</label>
+                              </div>
+                          </div>
+                      </td>
+                  @elseif ($accepted == false && $try > 0)
+                      <td rowpan="2" class="pt-2" style="background-color: rgb(255, 145, 136); text-align: center; height: 40px;" > {{--first solved--}}
+                          {{-- <strong style="color: rgb(243, 99, 92)">.</strong> --}}
+                          <div style="align-self: center;">
+                          <label>{{$try}} try</label>
+                          </div>
+                      </td>
+                  @else
+                      <td style="height: 35px;"></td>
+                  @endif
+          @else
+              @if (($accepted == false && $try > 0) || ($accepted == true))
+                      <td style="background-color: rgb(134, 136, 253);  text-align: center; height: 35px;" > {{--first solved--}}
+                      <div style="align-self: center;">
+                          <label>{{$try}} try</label>
+                          <label></label>
+                      </div>
+                      </td>
+                  @else
+                      <td style="height: 35px;"></td>
+                  @endif
+          @endif
 
-                        text-align: center;" > {{--first solved--}}
-                        <div>
-                        <strong class="justify-content-center">{{$minute}}</strong>
-                        <div style="align-self: center;">
-                            <label>{{$try}} try</label>
-                        </div>
-                        </div>
-                    </td>
-                @elseif ($accepted == false && $try > 0)
-                    <td rowpan="2" class="pt-2" style="background-color: rgb(255, 145, 136); text-align: center; height: 40px;" > {{--first solved--}}
-                        {{-- <strong style="color: rgb(243, 99, 92)">.</strong> --}}
-                        <div style="align-self: center;">
-                        <label>{{$try}} try</label>
-                        </div>
-                    </td>
-                @else
-                    <td style="height: 35px;"></td>
-                @endif
-            @endauth
+              @else
+                  @if ($accepted == true)
+                      <td style="
+
+                          @if ($minute == $problem->firstsolved)
+                              background-color: rgb(2, 150, 2); color: #fff;
+                          @elseif ($minute > $problem->firstsolved)
+                              background-color: rgb(100, 225, 100);
+                          @endif
+
+                          text-align: center;" > {{--first solved--}}
+                          <div>
+                              <strong class="justify-content-center">{{$minute}}</strong>
+                              <div style="align-self: center;">
+                                  <label>{{$try}} try</label>
+                              </div>
+                          </div>
+                      </td>
+                  @elseif ($accepted == false && $try > 0)
+                      <td rowpan="2" class="pt-2" style="background-color: rgb(255, 145, 136); text-align: center; height: 40px;" > {{--first solved--}}
+                          {{-- <strong style="color: rgb(243, 99, 92)">.</strong> --}}
+                          <div style="align-self: center;">
+                          <label>{{$try}} try</label>
+                          </div>
+                      </td>
+                  @else
+                      <td style="height: 35px;"></td>
+                  @endif
+              @endif
+@else
+              @if ($accepted == true)
+                  <td style="
+                      @if ($minute == $problem->firstsolved)
+                          background-color: rgb(2, 150, 2); color: #fff;
+                      @elseif ($minute > $problem->firstsolved)
+                          background-color: rgb(100, 225, 100);
+                      @endif
+
+                      text-align: center;" > {{--first solved--}}
+                      <div>
+                      <strong class="justify-content-center">{{$minute}}</strong>
+                      <div style="align-self: center;">
+                          <label>{{$try}} try</label>
+                      </div>
+                      </div>
+                  </td>
+              @elseif ($accepted == false && $try > 0)
+                  <td rowpan="2" class="pt-2" style="background-color: rgb(255, 145, 136); text-align: center; height: 40px;" > {{--first solved--}}
+                      {{-- <strong style="color: rgb(243, 99, 92)">.</strong> --}}
+                      <div style="align-self: center;">
+                      <label>{{$try}} try</label>
+                      </div>
+                  </td>
+              @else
+                  <td style="height: 35px;"></td>
+              @endif
+@endauth
             {{-- @endif --}}
 
             {{-- <td style="background-color: rgb(2, 185, 2);" >    accepted --}}

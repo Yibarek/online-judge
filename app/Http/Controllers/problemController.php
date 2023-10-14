@@ -279,6 +279,12 @@ class problemController extends Controller
             return redirect('/accessdenied');
         }
     }
+
+    public static function problemID($p_name){
+        $problem = DB::table('problems')->where('name', $p_name)->first();
+        return $problem->id;
+    }
+
     function addTestcase(Request $request, $contestt, $problem_id){
         $writter='';
         $problem = DB::table('problems')->where('id', $problem_id)->get();

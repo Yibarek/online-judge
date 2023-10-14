@@ -91,6 +91,7 @@
                     <?php $counter = 1; ?>
                     @while ($counter <= $c->winners)
                         <div style="padding-left: 15%; padding-bottom: 5px; font-weight: 500; color: rgb(16, 109, 44);">
+                            {{-- <label>{{$counter}}, </label><label style="color: #fff">...</label><label> Winner </label> --}}
                             <label>{{$counter}}, </label><label style="color: #fff">...</label><label> {{$winners[$c->id][$counter]}}</label>
                             <?php $counter++; ?>
                         </div>
@@ -100,10 +101,12 @@
 
                 <div class="p-2">
                     <strong>Sponsers: </strong>
-                    {{$c->sponsers}}
-                    <div style="border: 1px solid red; max-width: 30%; width: fit-content; height: fit-content; max-height: 200px; align-self: center;" >
-                        <img src="{{$c->logo}}" alt="no">
-                    </div>
+                    {{$c->sponsers}}<br>
+                    @foreach ($sponsers as $sponser)
+                        @if ($sponser->contest == $c->id)
+                        <img style="margin: 20px;" src="../../image/sponser/{{$sponser->sponser_logo}}" width="90" height="50" name="existing_logo" id="{{$sponser->sponser_logo}}">
+                        @endif
+                    @endforeach
                 </div>
             </div>
         </div>

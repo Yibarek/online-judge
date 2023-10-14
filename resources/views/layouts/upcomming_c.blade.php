@@ -161,24 +161,44 @@
                             @if ($con_reg[$c_id] == $c_id)
                                     @foreach ($Contestants as $contestant)
                                         if(end_time1{{$c_id}} > 0){
-                                            @foreach ($Contestants as $contestant)
-                                                @if ($contestant->status == 'Accepted')
+                                            @php
+                                                $ccoo = 0;
+                                            @endphp
+                                            @foreach ($Contestants as $contestantt)
                                                     // document.getElementById("enter{{$c_id}}").innerHTML = "Enter"
-                                                @else
-                                                    document.getElementById("time_left{{$c_id}}").innerHTML="Before Contest End";
-                                                @endif
+                                                    @if ($contestantt->contest == $c_id)
+                                                        @if ($contestantt->status == 'Pending')
+                                                            label{{$c_id}}.innerHTML = "Registered--Pending";
+                                                            label{{$c_id}}.style.color = "#C9BA32";
+                                                        @elseif ($contestantt->status == 'Accepted')
+                                                            label{{$c_id}}.style.color = "green";
+                                                            label{{$c_id}}.innerHTML = "Registered--Accepted";
+                                                        @else
+                                                            label{{$c_id}}.innerHTML = "Rejected";
+                                                            label{{$c_id}}.style.color = "red";
+                                                            document.getElementById("time_left{{$c_id}}").innerHTML="Before Contest End";
+                                                        @endif
+                                                        @php $ccoo++; @endphp
+                                                        @break
+                                                    @endif
+                                                    @if ($ccoo == 0)
+                                                        document.getElementById("time_left{{$c_id}}").innerHTML="1Before Contest End";
+                                                    @endif
                                             @endforeach
                                         }
                                         @if ($contestant->contest == $c_id)
                                             @if ($contestant->status == 'Pending')
-                                                label{{$c_id}}.innerHTML = "Registered";
+                                                label{{$c_id}}.innerHTML = "Registered--Pending";
+                                                label{{$c_id}}.style.color = "#C9BA32";
                                             @elseif ($contestant->status == 'Accepted')
                                                 label{{$c_id}}.style.color = "green";
-                                                label{{$c_id}}.innerHTML = "Registered";
+                                                label{{$c_id}}.innerHTML = "Registered--Accepted";
                                             @else
                                                 label{{$c_id}}.innerHTML = "Rejected";
                                                 label{{$c_id}}.style.color = "red";
+                                                document.getElementById("time_left{{$c_id}}").innerHTML="Before Contest End";
                                             @endif
+                                            @break
                                         @endif
                                     @endforeach
                                 @elseif ((Auth::user()->role == 'team' && $contest->type == 'Team') ||
@@ -269,11 +289,17 @@
 * will not use multiple accounts and will take part in the contest using your personal and the single account.
 
                                 </textarea>
-                                <div class="modal-footer navbar">
-                                    <a class="button p-2 getstarted"
-                                            href="/lc/add/contestant/{{$c_id}}"
-                                            style="border: none;">Agree</a>
-                                </div>
+                                @if (Auth::user()->city=='' || Auth::user()->college=='' || Auth::user()->country=='' || Auth::user()->department=='' || Auth::user()->name=='' || Auth::user()->organization=='' || Auth::user()->occupation=='')
+                                    <div class="modal-footer navbar">
+                                        <label for="" style="color: red; ">You are not able to register. Please complete your profile!</label>
+                                    </div>
+                                @else
+                                    <div class="modal-footer navbar">
+                                        <a class="button p-2 getstarted"
+                                                href="/lc/add/contestant/{{$c_id}}"
+                                                style="border: none;">Agree</a>
+                                    </div>
+                                @endif
                         </div>
 
                     </div>

@@ -42,7 +42,15 @@
       </div>
       <div>
       @auth
-        @if (Auth::user()->role == 'user')
+        @if (Auth::user()->role == 'user' && ($contestt !=0))
+        {{-- <div class="form-check anc">
+            <a style="font-weight: 500; cursor: pointer" id="mine_only" onclick="tryAgain();" for="gridCheck1">
+                <input class="form-check-input" type="checkbox" id="gridCheck1"
+                    @if ($only == 'true')
+                        checked = "true"
+                    @endif> try again</a>
+        </div> --}}
+        @elseif (Auth::user()->role == 'user' && ($contestt ==0))
         <div class="form-check anc">
             <a style="font-weight: 500; cursor: pointer" id="mine_only" onclick="selected_only();" for="gridCheck1">
                 <input class="form-check-input" type="checkbox" id="gridCheck1"
@@ -50,7 +58,7 @@
                         checked = "true"
                     @endif> mine only</a>
         </div>
-        @elseif (Auth::user()->role == 'team')
+        @elseif (Auth::user()->role == 'team' && ($contestt ==0))
         <div class="form-check anc">
             <a style="font-weight: 500; cursor: pointer" id="our_only" onclick="selected_only();" for="gridCheck1">
                 <input class="form-check-input" type="radio" id="gridCheck1"
@@ -88,14 +96,18 @@
           </tr>
         </thead>
         <tbody>
-          <?php $i=$count; $jj=0;?>
+          <?php $i=$count; $jj=0; $problem_ID='';?>
           @foreach ($submissions as $submission)
           <tr style="max-height: 20px;">
             @if ($contestt > 0)
               <th scope="row" style="font-weight: normal; ">{{ $i }}</th>
               <?php $i--;?>
             @endif
-
+            @if($jj==0)
+                @php
+                    $problem_ID = App\Http\Controllers\problemController::problemID($submission->problem) ;
+                @endphp
+            @endif
             @if ($contestt == 0)
               <th scope="row">
                 <!-- Button trigger modal -->
@@ -133,7 +145,7 @@
             <td>{{ $submission->cpu_time }} ms</td>
             {{-- <td>{{ $submission->memory}} kb</td> --}}
           </tr>
-
+           @php $jj++; @endphp
 
           @endforeach
 
@@ -162,7 +174,7 @@ class="modal fade" id="popup{{$submission->id}}" data-bs-backdrop="static" data-
 tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
 <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="min-width: 80%;">
   <div class="modal-content" style="overflow: auto;">
-    <?php// $user = $contest;$submission = $problem;$user1 = $contest1;$submission1 = $problem1;$c = $contestant;?> 
+    <?php// $user = $contest;$submission = $problem;$user1 = $contest1;$submission1 = $problem1;$c = $contestant;?>
     <div class="modal-header" style="height: 40px;">
     <div class="modal-title" id="staticBackdropLabel"><label style="font-weight: 500">   <l style="color: white;">__</l>User: </label> {{$submission->user}}     <label style="font-weight: 500">   <l style="color: white;">__ </l>Problem:</label> {{$submission->problem}} <label style="font-weight: 500">   <l style="color: white;">__</l> Cpu_time:</label> {{$submission->cpu_time}} <label style="font-weight: 500">   <l style="color: white;">__</l>  Memory:</label> {{$submission->memory}} <label style="font-weight: 500">   <l style="color: white;">__</l>   Verdict:</label>
     <z @if ($submission->verdict == 'Accepted')
@@ -184,13 +196,13 @@ tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
       <?php
         // (A) OPEN FILE
         if ($submission->language == 'c') {
-          $handle = fopen("file/Submissions/$submission->id.c", "r") or die("Error reading file!");
+          $handle = fopen("file\Submissions/$submission->id.c", "r") or die("Error reading file!");
         }
         else if ($submission->language == 'c++') {
-          $handle = fopen("file/Submissions/$submission->id.cpp", "r") or die("Error reading file!");
+          $handle = fopen("file\Submissions/$submission->id.cpp", "r") or die("Error reading file!");
         }
         else if ($submission->language == 'java') {
-          $handle = fopen("file/Submissions/$submission->id.java", "r") or die("Error reading file!");
+          $handle = fopen("file\Submissions/$submission->id.java", "r") or die("Error reading file!");
         }
         // (B) READ LINE BY LINE
         while (($line = fgets($handle)) !== false) {
@@ -305,6 +317,14 @@ tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
         else{
             document.location.href = "/s/only/0";
         }
+    }
+
+    function tryAgain(){
+        alelrt("123");
+        var user = {{Auth::user()->id}}
+        var problem = {{$problem_ID}};
+        var link = "s/editor/" +user+ "/"+ problem";
+        document.location.href = link;
     }
 </script>
 
