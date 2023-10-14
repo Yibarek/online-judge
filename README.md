@@ -20,7 +20,9 @@ Open your terminal or command prompt.<br>
 Navigate to the directory where you want to store the project.<br>
 Run the following command to clone the repository:
 
-<div style="width: 80%; background-color: gray;">git clone https://github.com/Yibarek/online-judge</div>
+```console
+        git clone https://github.com/Yibarek/online-judge
+```
 
 <h2>Step 3: Install Dependencies</h2>
 To ensure all required packages and dependencies are installed, you need to run the Composer install command:
@@ -28,7 +30,7 @@ Navigate to the project directory in your terminal.
 
 Execute the following command to install the project dependencies:
 
-composer install
+composer update
 
 <h2>Step 4: Set Up Environment Configuration</h2>
 Most Laravel projects require environment-specific configurations, such as database credentials and application settings. Follow these steps to set up the environment configuration:
