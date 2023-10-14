@@ -1,5 +1,7 @@
 <h1>Programming Contest Judge System</h1>
 
+Online programing contest judge ststem is developed by Laravel framework and here are some discription about the system and installation procedures.
+
 ![Alt text](image.png)
 
 Programming Contest Judge System is a web applicationthat is developed to evaluate (judge) the algorithmic source code submitted by the users and tests it against various test cases and constraints. It also hosts Competitive Programming Contests as well and produces contest results, which usually called score boards for every contest. Users are also able to practice by submitting any problem after the contest ends. 
