@@ -1,10 +1,10 @@
 <h1>Programming Contest Judge System</h1>
 
-Online programing contest judge ststem is developed by Laravel framework and here are some discription about the system and installation procedures.
+Online programing contest judge system is developed by <b>Laravel</b> framework <img width ="100" height = "25" src="https://www.bing.com/ck/a?!&&p=e788fd8ca9e36dfcJmltdHM9MTY5NzI0MTYwMCZpZ3VpZD0xODgyODgxZi0wYWViLTYzNWItMmU5Zi05YTdmMGIwMDYyZmQmaW5zaWQ9NTY2Ng&ptn=3&hsh=3&fclid=1882881f-0aeb-635b-2e9f-9a7f0b0062fd&u=a1L2ltYWdlcy9zZWFyY2g_cT1sYXJhdmVsIGljb24mRk9STT1JUUZSQkEmaWQ9OEJBRjZFOTMyMkQ3N0EzRkY0OTYxRDI3NzA0RUZDQTk1Rjc4NzQyNQ&ntb=1">and here are some description about the system and installation procedures.
 
 ![Alt text](image.png)
 
-Programming Contest Judge System is a web applicationthat is developed to evaluate (judge) the algorithmic source code submitted by the users and tests it against various test cases and constraints. It also hosts Competitive Programming Contests as well and produces contest results, which usually called score boards for every contest. Users are also able to practice by submitting any problem after the contest ends. 
+Programming Contest Judge System is a web application that is developed to evaluate (judge) the algorithmic source code submitted by the users and tests it against various test cases and constraints. It also hosts Competitive Programming Contests as well and produces contest results, which usually called score boards for every contest. Users are also able to practice by submitting any problem after the contest ends. 
 
  The system can compile and execute code, and test the source code with pre-constructed data. Submitted source code may be run with restrictions, including time limit, memory limit, security restriction and so on. The output of the code will be captured by the system, and compared with the standard output. The system will then return the result. The common results for a specific submissionare:Accepted, Wrong Answer, Time Limit Exceeds, Memory Limit Exceeds, Run Time Error, and Compilation Error.
  
