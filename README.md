@@ -1,6 +1,6 @@
 <h1>Programming Contest Judge System</h1>
 
-Online programing contest judge system is developed by <b>Laravel</b> framework ![larave](https://github.com/Yibarek/online-judge/assets/97822348/f1812b13-49eb-40e9-a49e-c2c8c06dc62b) and here are some description about the system and installation procedures.
+Online programing contest judge system is developed by ![larave](https://github.com/Yibarek/online-judge/assets/97822348/f1812b13-49eb-40e9-a49e-c2c8c06dc62b) <b>Laravel</b> framework and here are some description about the system and installation procedures.
 
 ![Alt text](image.png)
 
