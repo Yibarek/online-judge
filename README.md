@@ -10,16 +10,17 @@ Programming Contest Judge Systemposes problems such as questions in programming 
 
 <h1>INSTALLATION</h1>
 <h2>Step 1: Install Required Software</h2>
-Before getting started, ensure that your machine meets the system requirements for running Laravel projects. You’ll need to have the following software installed:
+Before getting started, ensure that your machine meets the system requirements for running Laravel projects. You’ll need to have the following software installed:<br>
 <b>PHP:</b> Install the latest stable version of PHP on your machine. You can download it from the official PHP website (https://www.php.net/downloads.php).
 
 <b>Composer:</b> Laravel relies heavily on Composer, a dependency management tool for PHP. Install Composer by following the instructions on the Composer website (https://getcomposer.org/download/).
 
-<h2>Step 2: Clone the Repository Assuming you have Git installed on your machine, follow these steps to clone the Laravel project repository from GitHub:</h2>
-Open your terminal or command prompt.
-Navigate to the directory where you want to store the project.
+<h2>Step 2: Clone the Repository</h2>
+Open your terminal or command prompt.<br>
+Navigate to the directory where you want to store the project.<br>
 Run the following command to clone the repository:
-git clone https://github.com/Yibarek/online-judge
+
+<div style="width: 80%; background-color: gray;">git clone https://github.com/Yibarek/online-judge</div>
 
 <h2>Step 3: Install Dependencies</h2>
 To ensure all required packages and dependencies are installed, you need to run the Composer install command:
@@ -45,11 +46,8 @@ If the Laravel project you downloaded includes a database, you may need to migra
 Migrate the database tables:
 
 php artisan migrate
-Seed the database (optional, if the project includes seeders):
 
-php artisan db:seed
-
-<h2>Step 7: Launch the Laravel Project You’re now ready to launch the Laravel project on your local machine:</h2>
+<h2>Step 7: Launch the System:</h2>
 In your terminal, navigate to the project directory.
 Start the development server by executing the following command:
 php artisan serve
