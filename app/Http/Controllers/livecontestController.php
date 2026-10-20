@@ -253,7 +253,7 @@ class livecontestController extends Controller
 
     }
 
-    public function checkContestTime($contestt){
+    public static function checkContestTime($contestt){
         $count = DB::table('contests')->where('id', $contestt)->count();
         $contest = DB::table('contests')->where('id', $contestt)->get();
         if ($count == 0) {

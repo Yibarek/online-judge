@@ -187,7 +187,7 @@ class userController extends Controller
 
     }
 
-    public function registration($id){
+    public static function registration($id){
         $users = DB::table('users')->where('id', $id)->get();
         foreach ($users as $user) {
             if ($user->name == '' ||

@@ -470,7 +470,7 @@ public function user(){/*userController::checkuser();*/}
     }
 
 
-    public function fecthtime($time){
+    public static function fecthtime($time){
         $second = 0;
         $temp = "";
         for ($i=16; $i < strlen($time); $i++) {

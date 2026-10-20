@@ -181,7 +181,10 @@ class adminController extends Controller
         }
     }
 
-    public function checkPermission($permission){
+    public static function checkPermission($permission){
+        if (!Auth::check()) {
+            return 'Not Found';
+        }
         $count = DB::table('permissions')->where('admin', Auth::user()->username)->count();
         $Admin = DB::table('permissions')->where('admin', Auth::user()->username)->get();
 

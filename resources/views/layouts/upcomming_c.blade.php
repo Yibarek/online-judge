@@ -224,7 +224,7 @@
                                 document.getElementById("contestant{{$c_id}}").innerHTML = "";
                                 document.getElementById('time{{$c_id}}').innerHTML = days4{{$c_id}} + "d " + hours4{{$c_id}} + ": "+ minutes4{{$c_id}} + ": " + seconds4{{$c_id}};
                         @auth
-                            @if ((Auth::user()->role == 'admin' && Auth::user()->username == $creator) || Auth::user()->role ==  'superadmin')
+                            @if ((Auth::user()->role == 'admin' && Auth::user()->username == $contest->creator) || Auth::user()->role ==  'superadmin')
                                 document.getElementById("enter{{$c_id}}").innerHTML = "Enter"
                             @else
                                 if ({{$con_reg[$c_id]}} == {{$c_id}}) {//check status
@@ -289,17 +289,25 @@
 * will not use multiple accounts and will take part in the contest using your personal and the single account.
 
                                 </textarea>
-                                @if (Auth::user()->city=='' || Auth::user()->college=='' || Auth::user()->country=='' || Auth::user()->department=='' || Auth::user()->name=='' || Auth::user()->organization=='' || Auth::user()->occupation=='')
-                                    <div class="modal-footer navbar">
-                                        <label for="" style="color: red; ">You are not able to register. Please complete your profile!</label>
-                                    </div>
+                                @auth
+                                    @if (Auth::user()->city=='' || Auth::user()->college=='' || Auth::user()->country=='' || Auth::user()->department=='' || Auth::user()->name=='' || Auth::user()->organization=='' || Auth::user()->occupation=='')
+                                        <div class="modal-footer navbar">
+                                            <label for="" style="color: red; ">You are not able to register. Please complete your profile!</label>
+                                        </div>
+                                    @else
+                                        <div class="modal-footer navbar">
+                                            <a class="button p-2 getstarted"
+                                                    href="/lc/add/contestant/{{$c_id}}"
+                                                    style="border: none;">Agree</a>
+                                        </div>
+                                    @endif
                                 @else
                                     <div class="modal-footer navbar">
                                         <a class="button p-2 getstarted"
-                                                href="/lc/add/contestant/{{$c_id}}"
-                                                style="border: none;">Agree</a>
+                                                href="/login"
+                                                style="border: none;">Login to Register</a>
                                     </div>
-                                @endif
+                                @endauth
                         </div>
 
                     </div>

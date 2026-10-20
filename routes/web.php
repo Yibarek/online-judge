@@ -39,7 +39,7 @@ Route::get('/test', function () {
 Auth::routes(['verify'=>true]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home')->middleware(['auth']);
-Route::get('/dashboard/{contestt}', [App\Http\Controllers\HomeController::class, 'index']);
+Route::get('/dashboard/{contestt}', [App\Http\Controllers\HomeController::class, 'index'])->middleware(['auth']);
 
 Route::get('/r/{contest}',[App\Http\Controllers\ratingController::class,'list']);
 Route::get('/rating',[App\Http\Controllers\ratingController::class,'list_geust']);
@@ -47,6 +47,28 @@ Route::get('/rating',[App\Http\Controllers\ratingController::class,'list_geust']
 Route::get('/c/{contestt}',[App\Http\Controllers\contestController::class,'list']);
 Route::get('/contest',[App\Http\Controllers\contestController::class,'list_geust']);
 Route::get('/c/Detail/{contestt}',[App\Http\Controllers\contestController::class,'detail']);
+Route::get('/createContest',[App\Http\Controllers\contestController::class,'createContest'])->middleware(['auth']);
+Route::post('/c/contestDetail/{contestt}',[App\Http\Controllers\contestController::class,'contestDetail'])->middleware(['auth']);
+Route::post('/c/contestSchedule/{contestt}',[App\Http\Controllers\contestController::class,'contestSchedule']);
+Route::post('/c/contestProblemNo/{contestt}',[App\Http\Controllers\contestController::class,'contestProblemNo'])->middleware(['auth']);
+Route::post('/c/contestProblems/{contestt}',[App\Http\Controllers\contestController::class,'contestProblems'])->middleware(['auth']);
+Route::post('/c/savecontestProblems/{contestt}',[App\Http\Controllers\contestController::class,'saveContestProblems']);
+Route::get('/c/addTestcases/{contestt}/{p_in_s}',[App\Http\Controllers\contestController::class,'addTestcases'])->middleware(['auth']);
+Route::get('/c/finishReg/{contestt}',[App\Http\Controllers\contestController::class,'finishContestReg'])->middleware(['auth']);
+
+Route::get('/c/toDetail/{contestt}',[App\Http\Controllers\contestController::class,'toDetail'])->middleware(['auth']);
+Route::get('/c/toSchedule/{contestt}',[App\Http\Controllers\contestController::class,'toSchedule'])->middleware(['auth']);
+Route::get('/c/toProblemNo/{contestt}',[App\Http\Controllers\contestController::class,'toNoOfProblems'])->middleware(['auth']);
+Route::get('/c/toProblems/{contestt}',[App\Http\Controllers\contestController::class,'toProblems'])->middleware(['auth']);
+
+Route::get('/lc/scoreboard/{contestt}', [App\Http\Controllers\livecontestController::class, 'scoreboard']);
+Route::get('/lc/scoreboard_geust/{contestt}', [App\Http\Controllers\livecontestController::class, 'scoreboard_geust']);
+Route::get('/lc/clarification/{contest}', [App\Http\Controllers\livecontestController::class, 'clarification'])->middleware(['auth']);
+Route::get('/lc/contestants/{c_id}', [App\Http\Controllers\contestantController::class, 'list']);
+Route::get('/lc/add/contestant/{contest}', [App\Http\Controllers\contestantController::class, 'add'])->middleware(['auth']);
+Route::get('/lc/complete/{contestt}', [App\Http\Controllers\contestController::class, 'complete'])->middleware(['auth']);
+Route::get('/lc/sendClarification/{contestt}', [App\Http\Controllers\livecontestController::class, 'sendClarification'])->middleware(['auth']);
+Route::get('/lc/selectChat/{user}/{contestt}', [App\Http\Controllers\livecontestController::class, 'loadClarification'])->middleware(['auth']);
 
 
 Route::get('/contestant/accept/{id}',[App\Http\Controllers\contestantController::class,'accept'])->middleware(['auth']);
@@ -70,6 +92,10 @@ Route::get('/setPermission/{user}',[App\Http\Controllers\adminController::class,
 Route::get('/checkContestTime/{contestt}',[App\Http\Controllers\livecontestController::class,'checkContestTime'])->middleware(['auth']);
 
 // Team
+Route::get('/createTeam',[App\Http\Controllers\teamController::class,'createTeam'])->middleware(['auth']);
+Route::get('/t/{contest}',[App\Http\Controllers\teamController::class,'list'])->middleware(['auth']);
+Route::get('/t/{name}',[App\Http\Controllers\teamController::class,'show'])->middleware(['auth']);
+Route::get('/t/delete/{id}',[App\Http\Controllers\teamController::class,'delete'])->middleware(['auth']);
 
 
 // Country
@@ -93,8 +119,8 @@ Route::get('/submission',[App\Http\Controllers\submissionController::class,'list
 Route::get('/s/only/{contest}',[App\Http\Controllers\submissionController::class,'listOnly'])->middleware(['auth']);
 Route::get('/s/{contestt}/{problem}',[App\Http\Controllers\submissionController::class,'listDetail']);
 // Route::get('/excecute/{contest}', [App\Http\Controllers\submissionController::class, 'execute']);
-Route::post('/excecute/{contest}', [App\Http\Controllers\actionController::class, 'execute'])->middleware(['auth']);
-Route::get('/ft/{contest}', [App\Http\Controllers\actionController::class, 'fecthtime']);
+Route::post('/excecute/{contest}', [App\Http\Controllers\submissionController::class, 'execute'])->middleware(['auth']);
+Route::get('/ft/{contest}', [App\Http\Controllers\submissionController::class, 'fecthtime']);
 Route::get('/s/editor/{id}/{contest?}',[App\Http\Controllers\problemController::class,'Editor'])->middleware(['auth']);
 
 Route::get('/searchTeam/{team}',[App\Http\Controllers\teamController::class,'searchTeam'])->middleware(['auth']);
